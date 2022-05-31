@@ -1,0 +1,36 @@
+acme_application:
+  namespace: acme
+  nodeselector: {
+                 minikube: 'apptype=acme',
+                 minikube-2: 'apptype=tmp'
+                }
+  secret:
+    - generic cart-redis-pass --from-literal=password=ca$hc0w
+    - generic catalog-mongo-pass --from-literal=password=ca$hc0w
+    - generic order-postgres-pass --from-literal=password=ca$hc0w
+    - generic users-mongo-pass --from-literal=password=ca$hc0w
+    - generic users-redis-pass --from-literal=password=ca$hc0w
+  deploy:
+    - kubernetes-manifests/cart-redis-total.yaml
+    - kubernetes-manifests/cart-total.yaml
+    - kubernetes-manifests/catalog-db-total.yaml
+    - kubernetes-manifests/catalog-total.yaml
+    - kubernetes-manifests/payment-total.yaml
+    - kubernetes-manifests/order-db-total.yaml
+    - kubernetes-manifests/order-total.yaml
+    - kubernetes-manifests/users-db-total.yaml
+    - kubernetes-manifests/users-redis-total.yaml
+    - kubernetes-manifests/users-total.yaml
+    - kubernetes-manifests/frontend-total.yaml
+    - kubernetes-manifests/point-of-sales-total.yaml
+  configmap:
+    - catalog-db-initdb-configmap.yaml
+    - users-db-initdb-configmap.yaml
+  monitor:
+    - get services -l service=frontend
+    - get services -l service=pos
+wavefront_application:
+  namespace: wavefront
+  api_token: ad3d1937-60c6-4756-ae06-5d00a461a4ae
+  wavefront_url: https://longboard.wavefront.com
+  cluster_name: minikube
