@@ -5,8 +5,8 @@ import wavefront_api_client as wave_api
 from common import WfClient, convert_time_to_epoch_msec
 from datetime import datetime
 
-base_url = 'https://longboard.wavefront.com'
-api_key = 'ad3d1937-60c6-4756-ae06-5d00a461a4ae'
+base_url = ''
+api_key = ''
 proxy_ip = '10.212.155.104'
 HOUR_MSEC = 60 * 60 * 1000
 config = wave_api.Configuration()
