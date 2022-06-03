@@ -1,0 +1,43 @@
+# wf config setup to setup - Creates a default file in /Users/ssharat/.wavefront
+Sample file:
+less /Users/ssharat/.wavefront
+[default]
+token = <> 
+endpoint = longboard.wavefront.com
+proxy = 192.168.0.15
+format = human
+
+[demo]
+token = <> 
+endpoint = demo.wavefront.com
+proxy = 192.168.0.15
+format = human
+
+[vmware]
+token = <> 
+endpoint = vmware.wavefront.com
+proxy = 192.168.0.15
+format = human
+
+[ae]
+token = <>
+endpoint = longboard.wavefront.com
+proxy = 192.168.0.15
+format = human
+
+
+# Useful commands:
+wf --help
+wf config show
+wf dashboard list 
+wf alert list
+wf metric list under kubernetes.cluster.cpu
+wf query raw 'kubernetes.cluster.cpu.request' -H minikube -s -2h -e -1h -f csv
+
+# Import and export dashboards
+wf dashboard --profile=vmware describe -f json "Spring-Cloud-Gateway-for-Kubernetes" > wavefront-spring-cloud-gateway-for-kubernetes.json
+wf dashboard --profile=ae import -f json wavefront-spring-cloud-gateway-for-kubernetes.json 
+wf dashboard --profile=ae list
+
+wf query --profile=csg 'limit(10, ts(kubernetes.pod.memory.working_set))' -s -10m -f csv 
+wf dashboard --profile=demo describe -f json Wavefront-Full-Stack-Observer > full-stack-observer.json 
