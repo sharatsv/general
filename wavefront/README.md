@@ -19,7 +19,7 @@ Once the data is in Wavefront (verify from Browse -> Metrics), you can create Da
 
 ## common.py
 ```
- - Common methods/classes useful for other scripts
+Common methods/classes useful for other scripts
 ```
 
 ## wf_twitter_dashboard.py
@@ -31,7 +31,7 @@ Once the data is in Wavefront (verify from Browse -> Metrics), you can create Da
 
 ## deploy_acme.py
 ```
- - Script to deploy the ACME fitness app 
+Script to deploy the ACME fitness app 
 ```
 
 ## wf_query_dashboard.py
@@ -49,7 +49,7 @@ Once the data is in Wavefront (verify from Browse -> Metrics), you can create Da
 
 ## chaos.py
 ```
-- Simple scheduler to create & clear chaos (trigger chaos-monkey)
+Simple scheduler to create & clear chaos (trigger chaos-monkey)
 ```
 
 NOTE - For wf-sdk reference see:
